@@ -6,12 +6,79 @@ void main() {
   runApp(MyApp());
 }
 
+// in this project , i am going to send the data to the server
+// for this first of all, import the http package
+// now in the coding area
+
+// make the two TextController
+// one is email controller , second is the password controller
+
+
+// this controller takes the values and then send it to the server
+// by final TextEditingController emailController = TextEditingController();
+
+//then makes the void function of login which takes two parameters with the async fubctionality
+
+// first one is email and second one is password type , both are of string type
+
+// then use the try catch block
+
+
+// try {} catch (e){}
+
+
+// in try block first we find the response by using the
+// final response = await http.post('api_link here');
+// then  we provide the api key to the app by using header{}
+// in header {
+//    "Content-Type" : "application/json",
+//    "x-api-key" : "your_actual_key"
+//
+// }
+
+// this is the method to define the actual private key to the the app
+
+
+// then in body use jsonEncode and provide the parameters such as
+
+
+// body : jsonEncode({
+// "email" : email,    ("email" is the api- parameter and {email} is the value which is given by the controller)
+//  "password": password (this is just like the key-value pair)
+// })
+
+
+
+
+// then if response exists then works
+
+// if not exists then it is cleared that it doees not exist
+
+
+
+// last but not least , provide the email controller and password controller to the both text form field
+
+
+
+// and on tap :-> call the login function with the email and password value
+
+
+
+
+
+
+
+
+
+
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+  // this is the function to handle the login request
+  // it takes email and password as parameters
+  // and sends a POST request to the API endpoint
   void login(String email, String password) async {
     try {
       final response = await http.post(
@@ -19,12 +86,9 @@ class MyApp extends StatelessWidget {
         //for the api key
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key' : 'reqres-free-v1'
+          'x-api-key': 'reqres-free-v1',
         },
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        }),
+        body: jsonEncode({'email': email, 'password': password}),
       );
       ;
 
@@ -82,10 +146,7 @@ class MyApp extends StatelessWidget {
                     color: Colors.green.shade400,
                   ),
                   child: const Center(
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    child: Text('Log In', style: TextStyle(fontSize: 16)),
                   ),
                 ),
               ),
