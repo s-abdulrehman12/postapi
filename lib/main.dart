@@ -11,7 +11,9 @@ class MyApp extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+  // this is the function to handle the login request
+  // it takes email and password as parameters
+  // and sends a POST request to the API endpoint
   void login(String email, String password) async {
     try {
       final response = await http.post(
@@ -19,12 +21,9 @@ class MyApp extends StatelessWidget {
         //for the api key
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key' : 'reqres-free-v1'
+          'x-api-key': 'reqres-free-v1',
         },
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        }),
+        body: jsonEncode({'email': email, 'password': password}),
       );
       ;
 
@@ -82,10 +81,7 @@ class MyApp extends StatelessWidget {
                     color: Colors.green.shade400,
                   ),
                   child: const Center(
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    child: Text('Log In', style: TextStyle(fontSize: 16)),
                   ),
                 ),
               ),
